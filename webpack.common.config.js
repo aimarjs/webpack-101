@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry: {
-		app: './src/index.js'
+		app: './src/client/index.js'
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
@@ -12,7 +12,7 @@ module.exports = {
 				collapseWhitespace: true
 			},
 			hash: false,
-			template: './src/index.html'
+			template: './src/client/index.html'
 		})
 	]
 };

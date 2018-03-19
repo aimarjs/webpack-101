@@ -1,0 +1,19 @@
+.App {
+	display: flex;
+  flex-flow: column;
+	align-items: center;
+	justify-content: center;
+	width: 100vw;
+	height: 100vh;
+	background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+}
+
+.Headline {
+  margin-top: 64px;
+  font-size: 3em;
+  font-weight: 300;
+}
+
+img {
+  height: 200px;
+}
