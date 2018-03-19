@@ -8,6 +8,7 @@ const common = require('./webpack.common.config.js');
 // const VENDOR_LIBRARIES = ["react", "react-dom"];
 
 module.exports = merge(common, {
+	devtool: 'source-map',
 	module: {
 		rules: [
 			{
@@ -89,7 +90,9 @@ module.exports = merge(common, {
 		// new webpack.optimize.CommonsChunkPlugin({
 		//   name: "manifest"
 		// }),
-		new UglifyJSPlugin()
+		new UglifyJSPlugin({
+			sourceMap: true
+		})
 	],
 	output: {
 		path: path.resolve(__dirname, 'dist'),

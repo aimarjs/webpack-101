@@ -10,3 +10,61 @@ body {
 	font-size: 1em;
 	font-weight: 300;
 }
+
+h1,
+h2,
+h3,
+h4 {
+	margin: 0;
+	padding: 0;
+}
+
+h1 {
+	font-size: 1.938em;
+	line-height: 2.313em;
+}
+
+h2 {
+	font-size: 2.75em;
+	line-height: 3.25em;
+}
+
+h3 {
+	padding: 16px;
+	font-size: 1.938em;
+	line-height: 2.313;
+}
+
+h4 {
+	font-size: 1.375em;
+	line-height: 1.625em;
+}
+
+p {
+	padding-bottom: 16px;
+	font-size: 1em;
+	line-height: 1.5em;
+}
+
+small {
+	font-size: 0.75em;
+	line-height: 1.45;
+}
+
+strong {
+	font-weight: 700;
+}
+
+input,
+button,
+textarea {
+	outline: none;
+}
+
+textarea {
+	resize: none;
+}
+
+a {
+	text-decoration: none;
+}
