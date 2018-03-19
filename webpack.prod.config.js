@@ -46,7 +46,7 @@ module.exports = merge(common, {
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
-          "file-loader?name=[name].[hash:base64:6].[ext]&outputPath=media/",
+          "file-loader?name=[name].[hash:base64:6].[ext]&outputPath=static/media/",
           {
             loader: "image-webpack-loader",
             options: {
@@ -73,7 +73,11 @@ module.exports = merge(common, {
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: ["file-loader"]
+        loader: require.resolve("file-loader"),
+        // exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/],
+        options: {
+          name: "static/fonts/[name].[hash:8].[ext]"
+        }
       }
     ]
   },
@@ -88,7 +92,7 @@ module.exports = merge(common, {
       template: "./src/index.html"
     }),
     new ExtractTextPlugin({
-      filename: "css/[name].[chunkhash].css",
+      filename: "static/css/[name].[chunkhash].css",
       disable: false,
       allChunks: true
     }),
@@ -99,6 +103,6 @@ module.exports = merge(common, {
   ],
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].[chunkhash].js"
+    filename: "static/js/[name].[chunkhash].js"
   }
 });

@@ -1,4 +1,4 @@
-// import './index.scss';
+import css from "./index.css";
 import React from "react";
 import { render } from "react-dom";
 import App from "./components/App";
