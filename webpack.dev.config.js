@@ -50,7 +50,11 @@ module.exports = merge(common, {
     open: false
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin()
-  ]
+    new webpack.HotModuleReplacementPlugin()
+    // new webpack.NamedModulesPlugin()
+  ],
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "app.js"
+  }
 });

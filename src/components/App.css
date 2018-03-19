@@ -3,6 +3,7 @@
   height: 100vh;
   background-color: gray;
   color: red;
+  display: flex;
 }
 
 h1 {

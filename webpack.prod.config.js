@@ -6,6 +6,8 @@ const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 const merge = require("webpack-merge");
 const common = require("./webpack.common.config.js");
 
+// const VENDOR_LIBRARIES = ["react", "react-dom"];
+
 module.exports = merge(common, {
   module: {
     rules: [
@@ -23,11 +25,20 @@ module.exports = merge(common, {
               loader: "css-loader",
               options: {
                 modules: true,
-                localIdentName: "[name]__[local]--[hash:base64:5]"
+                localIdentName: "[name]__[local]--[hash:base64:5]",
+                importLoaders: 1
               }
             },
             {
               loader: "sass-loader"
+            },
+            {
+              loader: "postcss-loader",
+              options: {
+                config: {
+                  path: "postcss.config.js"
+                }
+              }
             }
           ]
         })
@@ -35,7 +46,7 @@ module.exports = merge(common, {
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
-          "file-loader?name=[name].[ext]&outputPath=media/",
+          "file-loader?name=[name].[hash:base64:6].[ext]&outputPath=media/",
           {
             loader: "image-webpack-loader",
             options: {
@@ -73,14 +84,21 @@ module.exports = merge(common, {
       minify: {
         collapseWhitespace: true
       },
-      hash: true,
+      hash: false,
       template: "./src/index.html"
     }),
     new ExtractTextPlugin({
-      filename: "css/main.css",
+      filename: "css/[name].[chunkhash].css",
       disable: false,
       allChunks: true
     }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: "manifest"
+    // }),
     new UglifyJSPlugin()
-  ]
+  ],
+  output: {
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].[chunkhash].js"
+  }
 });
